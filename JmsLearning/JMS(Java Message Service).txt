@@ -1,0 +1,45 @@
+JMS(Java Message Service)
+                                                      
+sender/producer/publiser ---Message----> message queue  ----Message------> Receiver/subscriber/listener
+          (activeMQ)                   (queue)      <---Acknowledge--
+
+1. using Jms we can send and receive the message b/w two or more cilent
+2.HandlingRouting and delivery of the message
+
+                    queue  --> one sender-->MQ  ----->One receiver
+jms designation---->
+                     Topic -->one sender-->Topic-->multiple receiver
+
+
+JMS Api support multiple jms provider
+JMS Provider 
+1.ActiveMQ(Mostly used)
+2.RabbitMQ
+3.JBpssMQ
+4.Hornet
+5.IBM Websphere MQ
+
+1.JMSConnectionFactory
+client users -->JMSConnectionFactory(obj)--to provider
+                 create connection 
+
+set of connection parameters --defined by admin
+
+2.JMSConnection
+
+virtual connection (TCP/IP) 
+
+3.JMSDesignation
+
+Queue,Topic
+
+4.JMSSession
+Message Producer
+Message Consumers
+Message
+Queue Browser
+Temprory Queues and topics 
+
+
+
+
