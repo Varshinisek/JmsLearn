@@ -1,0 +1,54 @@
+package com.example.demojms2;
+
+
+
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+
+import jakarta.jms.Connection;
+
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.JMSException;
+import jakarta.jms.MessageProducer;
+import jakarta.jms.Session;
+import jakarta.jms.TextMessage;
+
+
+public class MessageSender {
+
+	private static String url=ActiveMQConnection.DEFAULT_BROKER_URL;
+	
+	
+	
+	private static String queuename="MESSAGE_QUEUE";
+	
+	private static void main(String[] args) throws JMSException
+	{
+		System.out.println("url=" +url);
+		
+		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
+		Connection connection = connectionFactory.createConnection();
+		connection.start();
+		
+		
+		
+		Session session=connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		
+		Destination destination =session.createQueue(queuename);
+		
+		MessageProducer producer = session.createProducer(destination);
+		TextMessage message = session.createTextMessage("Hii,Varshiniiiii");
+		
+		producer.send(message);
+		
+		System.out.println("Message" +message.getText() + ",sent successfully to the queue");
+		connection.close();
+		
+	}
+	
+	
+	
+	
+}
